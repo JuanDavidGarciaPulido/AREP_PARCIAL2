@@ -2,6 +2,8 @@
 
 #Descripción del proyecto
 
+Avance: Creación de instancias EC2, instalación de programas necesarios, index.html, ambas funciones de búsqueda implementadas, 
+
 ##Arquitectura
 
 Math Services: Micro-servicios
