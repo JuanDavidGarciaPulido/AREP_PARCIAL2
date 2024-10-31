@@ -2,6 +2,12 @@
 
 #Descripción del proyecto
 
+##Arquitectura
+
+Math Services: Micro-servicios
+
+Service Proxy: Recibe las solicitudes de llamado desde los clientes y se las delega a las dos instancias del servicio de ordenamiento usando un algoritmo de round-robin.
+
 #F#uncionamiento
 
 #Instalación
