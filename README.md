@@ -16,7 +16,7 @@ Service Proxy: Recibe las solicitudes de llamado desde los clientes y se las del
 # Instalación y ejecución local del proyecto
 Clonar el repositorio: git clone https://github.com/JuanDavidGarciaPulido/AREP_PARCIAL2.git
 
-Navegar a la carpeta raíz del proyecto: cd AREP_PARCIAL2-main
+Navegar a la carpeta raíz del proyecto: cd AREP_PARCIAL2
 
 Compilar código del proyecto y generar jar: mvn clean install
 
@@ -36,17 +36,26 @@ Abrir tres terminales de comando y ejecutar el comando  java -jar cambiando el p
 
 ![image](https://github.com/user-attachments/assets/27b0ff8a-582a-45d6-9a5c-268a8fff258a)
 
-# Como correrlo en EC2
+# Como desplegar en EC2
 
-## Crear las tres instancias de EC2
+## Crear las tres instancias de EC2 (Permitir tráfico en el puerto 8080 en todas las instancias)
+
 ![image](https://github.com/user-attachments/assets/9fb3aa29-7a46-4c47-87f0-d6ea6411a5ba)
 
-## Clonar los repositorios y compilarlos en dichas instancias
+Clonar los repositorios y compilarlos en dichas instancias (Modificar la Configuración del Proxy en el archivo HttpConnectionExample)
 
-## Ejecutar el proyecto usando el comando: 
-
+Ejecutar el comando en cada una de las instancias:
+    ```
+        java -jar target/AREP_PARCIAL2-1.0-SNAPSHOT.jar 
+    ```
+Para usar la aplicación se debe ingresar a la dirección IP pública de la instancia del Proxy en el puerto 8080 de nuestro navegador, en este caso es http://54.83.191.205:8080/
 
 
 # Video demostración funcionamiento.
+
+
+https://github.com/user-attachments/assets/a31fd176-d997-493c-9d2d-b8fc3b40e46c
+
+
 
 
