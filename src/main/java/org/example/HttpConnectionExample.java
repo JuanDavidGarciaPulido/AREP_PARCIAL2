@@ -1,44 +1,45 @@
 package org.example;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import java.util.Arrays;
+import java.util.List;
+
+@Service
 public class HttpConnectionExample {
 
-    private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
+    //private final List<String> servers = Arrays.asList("http://localhost:8081", "http://localhost:8082");
 
-    public static void main(String[] args) throws IOException {
+    private final List<String> servers = Arrays.asList("http://3.208.3.64:8080", "http://35.168.10.28:8080");
 
-        URL obj = new URL(GET_URL);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("User-Agent", USER_AGENT);
+    int currentIndex = 0;
 
-        //The following invocation perform the connection implicitly before getting the code
-        int responseCode = con.getResponseCode();
-        System.out.println("GET Response Code :: " + responseCode);
-
-        if (responseCode == HttpURLConnection.HTTP_OK) { // success
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            // print result
-            System.out.println(response.toString());
-        } else {
-            System.out.println("GET request not worked");
-        }
-        System.out.println("GET DONE");
+    public ResponseEntity<String> linearSearch (int[] list, int value){
+        String url = servers.get(currentIndex) + "/linearsearch?list="+formatArray(list)+"&value="+value;
+        System.out.println("LinearSearch: "+ url);
+        currentIndex = (currentIndex +1) % servers.size();
+        return new RestTemplate().getForEntity(url, String.class);
     }
 
+
+    public ResponseEntity<String> binarySearch (int[] list, int value){
+        String url = servers.get(currentIndex) + "/binarysearch?list="+formatArray(list)+"&value="+value;
+        System.out.println("BinarySearch: "+ url);
+        currentIndex = (currentIndex +1) % servers.size();
+        return new RestTemplate().getForEntity(url, String.class);
+
+    }
+
+
+    private String formatArray(int[] list) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.length; i++){
+            sb.append(list[i]);
+            if (i < list.length -1){
+                sb.append(",");
+            }
+        }
+        return sb.toString();
+    }
 }
