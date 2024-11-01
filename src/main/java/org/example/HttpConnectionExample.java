@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class HttpConnectionExample {
 
-    //private final List<String> servers = Arrays.asList("http://localhost:8081", "http://localhost:8082");
-
-    private final List<String> servers = Arrays.asList("http://3.208.3.64:8080", "http://35.168.10.28:8080");
+    private final List<String> servers = Arrays.asList("http://localhost:8081", "http://localhost:8082");
+    //Para desplegar en AWS elimine la linea de arriba y descomente la linea de abajo cambiando las ip dinámicas cuando se requiera.
+    //private final List<String> servers = Arrays.asList("http://3.208.3.64:8080", "http://35.168.10.28:8080");
 
     int currentIndex = 0;
 
