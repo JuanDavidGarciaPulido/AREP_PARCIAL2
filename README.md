@@ -1,8 +1,7 @@
 # AREP_PARCIAL2
-Avance parcial: Creación de instancias EC2 e instalación de programas necesarios, clases base creadas, POM actualizado y corregido, index.html adaptado, ambas funciones de búsqueda implementadas. 
-
 # Descripción del proyecto:
 Solución web que explora dos algortimos de búsqueda, la búsqueda lineal y la búsqueda binaria mediante el diseño, construya y despliegue un aplicación web la cual estará desplegada en tres máquinas virtuales de EC2 de AWS.
+
 ## Tecnologías 
 Maven, git, github, Spring, html5, y js.
 
@@ -14,14 +13,28 @@ Math Services: Servicio para computar las funciones de ordenamiento (Linear Sear
 
 Service Proxy: Recibe las solicitudes de llamado desde los clientes y se las delega a las dos instancias del servicio de ordenamiento usando un algoritmo de round-robin.
 
-## Funcionamiento
-
-# Instalación
+# Instalación y ejecución local del proyecto
 Clonar el repositorio: git clone https://github.com/JuanDavidGarciaPulido/AREP_PARCIAL2.git
 
-Compilar clases del proyecto: mvn clean install
+Navegar a la carpeta raíz del proyecto: cd AREP_PARCIAL2-main
 
+Compilar código del proyecto y generar jar: mvn clean install
 
+Abrir tres terminales de comando y ejecutar el comando  java -jar cambiando el puerto (8080 para el proxy, 8081 y 8082 para los Math Service)
+
+    ```
+        java -jar target/AREP_PARCIAL2-1.0-SNAPSHOT.jar --server.port=8080
+    ```
+
+    ```
+        java -jar target/AREP_PARCIAL2-1.0-SNAPSHOT.jar --server.port=8081
+    ```
+    
+    ```
+        java -jar target/AREP_PARCIAL2-1.0-SNAPSHOT.jar --server.port=8082
+    ```
+
+![image](https://github.com/user-attachments/assets/27b0ff8a-582a-45d6-9a5c-268a8fff258a)
 
 # Como correrlo en EC2
 
